@@ -15,7 +15,8 @@ public class OrderCreatedHandler {
     private final DispatchService dispatchService;
 
     @KafkaListener(id = "orderConsumerClient", topics = "order.created",
-            groupId = "dispatch.order.created.consumer")
+            groupId = "dispatch.order.created.consumer",
+    containerFactory = "kafkaListenerContainerFactory")
     public void listen(OrderCreated payload) {
         log.info("Message Received " + payload);
         dispatchService.process(payload);
