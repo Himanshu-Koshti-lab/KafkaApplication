@@ -18,6 +18,6 @@ public class Kproducer {
 
     public void sendText(String s){
         logger.info("sending message : " + s);
-        kafkaTemplate.send("Topic",s);
+        kafkaTemplate.send("Main_Queue",s);
     }
 }
