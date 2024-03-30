@@ -8,37 +8,38 @@
     4. Payload
 
 # Kafka Server Start and process message isolated console itself
-## Zookeeper
+    ## Zookeeper
 
     .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 
-## Kafka
+    ## Kafka
 
     .\bin\windows\kafka-server-start.bat .\config\server.properties
 
-## Create Topic
+    ## Create Topic
 
     .\bin\windows\kafka-topics.bat --create --topic myTopic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
 
-## Delete Topic
+    ## Delete Topic
 
     .\bin\windows\kafka-topics.bat --delete --topic myTopic --bootstrap-server localhost:9092
 
 
-## Topic list
+    ## Topic list
 
     .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
 
 
-## Producer Console
+    ## Producer Console
 
-.\bin\windows\kafka-console-producer.bat --topic myTopic --bootstrap-server localhost:9092
+    .\bin\windows\kafka-console-producer.bat --topic myTopic --bootstrap-server localhost:9092
 
 
-## Consumer Console
+    ## Consumer Console
 
     .\bin\windows\kafka-console-consumer.bat --topic myTopic --bootstrap-server localhost:9092
 
+## By Java Code
 
 **@Annotation Used** 
 
@@ -77,9 +78,9 @@ Invalid JSON
     >{"uuid":"62968107-df94-44e9-b2fb-3d6c2","item":"book"}
 
 
-## Two-ways to do kafka setup Basic and Standard way.
+### Two-ways to do kafka setup Basic and Standard way.
 
-### **Basic one** 
+### **Basic** 
 Through application.properties. _Drawback_ _Single Instance Static Props_
 
     spring.kafka.consumer.auto-offset-reset=earliest
@@ -87,7 +88,7 @@ Through application.properties. _Drawback_ _Single Instance Static Props_
     spring.kafka.consumer.properties.spring.deserializer.value.delegate.class=org.springframework.kafka.support.serializer.JsonDeserializer
     spring.kafka.consumer.properties.spring.json.value.default.type = com.basic.demo.message.OrderCreated
 
-### Standard One
+### Standard
 
 Through Code **Dynamic Props based on Env** Create Config file and add component scan on it.
 
