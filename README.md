@@ -1,16 +1,43 @@
 # **Kafka Application**
 
-
-.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-
-.\bin\windows\kafka-server-start.bat .\config\server.properties
-
 ## _**Components of Event Driven Application**_
 
     1. Producer
     2. Consumer
     3. Topic
     4. Payload
+
+# Kafka Server Start and process message isolated console itself
+## Zookeeper
+
+    .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+## Kafka
+
+    .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+## Create Topic
+
+    .\bin\windows\kafka-topics.bat --create --topic myTopic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+
+## Delete Topic
+
+    .\bin\windows\kafka-topics.bat --delete --topic myTopic --bootstrap-server localhost:9092
+
+
+## Topic list
+
+    .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+
+## Producer Console
+
+.\bin\windows\kafka-console-producer.bat --topic myTopic --bootstrap-server localhost:9092
+
+
+## Consumer Console
+
+    .\bin\windows\kafka-console-consumer.bat --topic myTopic --bootstrap-server localhost:9092
 
 
 **@Annotation Used** 
