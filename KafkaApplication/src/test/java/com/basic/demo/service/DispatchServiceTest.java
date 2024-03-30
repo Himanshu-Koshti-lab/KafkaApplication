@@ -1,8 +1,11 @@
 package com.basic.demo.service;
 
+import com.basic.demo.TestData;
+import com.basic.demo.message.OrderCreated;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static java.util.UUID.randomUUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DispatchServiceTest {
@@ -16,6 +19,7 @@ class DispatchServiceTest {
 
     @Test
     void process() {
-        dispatchService.process("payload");
+        OrderCreated orderCreated = TestData.buildOrder(randomUUID(),randomUUID().toString());
+        dispatchService.process(orderCreated);
     }
 }
